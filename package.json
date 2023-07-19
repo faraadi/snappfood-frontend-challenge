@@ -1,5 +1,11 @@
 {
   "name": "snappfood-challenge",
+  "author": {
+	"name": "Farhad Sharifi",
+	"email": "faradidev@gmail.com"
+  },
+  "description": "A Front-End challenge for Snapp Food",
+  "license": "MIT",
   "private": true,
   "version": "0.0.0",
   "scripts": {
