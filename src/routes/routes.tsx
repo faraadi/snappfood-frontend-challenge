@@ -2,11 +2,13 @@ import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import Default from './Default/Default';
 import Home from './Default/Home/Home';
 import VendorsList, { loader as vendorsListLoader } from './Default/VendorsList/VendorsList';
+import Error from './Default/Error/Error';
 
 const routes: RouteObject[] = [
 	{
 		path: '/',
 		element: <Default />,
+		errorElement: <Error/>,
 		children: [
 			{
 				path: '/',
@@ -16,9 +18,8 @@ const routes: RouteObject[] = [
 				path: '/vendors',
 				element: <VendorsList />,
 				loader: vendorsListLoader,
-				errorElement: <h1>There was an error while loading the page. try again later</h1>,
 			},
-		]
+		],
 	}
 ];
 
