@@ -6,8 +6,8 @@ interface Props {
 
 export default function VendorText({ text }: Props) {
 	return (
-		<div className='vendor__text'>
-			<h4 className='vendor__heading'>{text}</h4>
+		<div className='text-card'>
+			<h4 className='text-card__heading'>{text}</h4>
 		</div>
 	);
 }

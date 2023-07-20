@@ -14,7 +14,7 @@ export default function VendorCard({ vendor }: Props) {
 		<a href={vendor.menuUrl} rel='noreferrer noopener' target='_blank'>
 			<article className='card'>
 				<div className='card__header'>
-					<img className='card__cover' src={coverPhoto} alt={vendor.logo} width={350} height={200} />
+					<img className='card__cover' src={coverPhoto} alt={vendor.logo} width={350} height={200} draggable={false} />
 					<img className='card__logo' src={vendor.logo} alt={`${vendor.logo}'s logo`} width={150} height={150} />
 				</div>
 				<div className='card__body'>

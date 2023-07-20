@@ -1,4 +1,6 @@
 @charset "utf-8";
+@import './variables';
+
 :root {
 	direction: rtl;
 }
@@ -14,6 +16,10 @@ body {
 *::before,
 *::after {
     box-sizing: border-box;
+}
+*::selection {
+	background-color: transparentize($color_primary, .5);
+	color: white;
 }
 
 /* Reapply the pointer cursor for anchor tags */
@@ -45,4 +51,8 @@ p {
 a {
 	text-decoration: inherit;
 	color: inherit;
+}
+
+:root {
+	color: $color_text;
 }
