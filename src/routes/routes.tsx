@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import Home from './Home/Home';
-import VendorsList from './VendorsList/VendorsList';
+import VendorsList, { loader as vendorsListLoader } from './VendorsList/VendorsList';
 
 const routes: RouteObject[] = [
 	{
@@ -10,6 +10,8 @@ const routes: RouteObject[] = [
 	{
 		path: '/vendors',
 		element: <VendorsList />,
+		loader: vendorsListLoader,
+		errorElement: <h1>There was an error while loading the page. try again later</h1>,
 	},
 ];
 

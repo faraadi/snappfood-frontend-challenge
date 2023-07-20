@@ -1,0 +1,48 @@
+@charset "utf-8";
+:root {
+	direction: rtl;
+}
+
+body {
+	margin: 0;
+	line-height: inherit;
+	background-color: #f8f9fb;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: pointer;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+a {
+	text-decoration: inherit;
+	color: inherit;
+}

@@ -28,6 +28,8 @@
         "__dirname": true
     },
     "rules": {
+		"no-use-before-define": 0,
+		"@typescript-eslint/no-use-before-define": [2, { "ignoreTypeReferences": true }],
         "@typescript-eslint/indent": [
             2,
             "tab"
