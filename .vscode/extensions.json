@@ -1,0 +1,8 @@
+{
+	"recommendations": [
+		"streetsidesoftware.code-spell-checker",
+		"dbaeumer.vscode-eslint",
+		"christian-kohler.path-intellisense",
+		"streetsidesoftware.code-spell-checker-persian"
+	]
+}
