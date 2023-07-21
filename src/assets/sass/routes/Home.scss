@@ -1,0 +1,19 @@
+@import '@/assets/sass/variables';
+
+.body {
+	height: calc(100vh - $header_height);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&__nav {
+		margin-bottom: 16px;
+	}
+
+	&__form {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+}

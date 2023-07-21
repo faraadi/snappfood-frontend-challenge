@@ -10,10 +10,9 @@
 	z-index: 10;
 	background-color: white;
 	box-shadow: $card_shadow;
-	height: 75px;
+	height: $header_height;
 	width: 100%;
 	padding: 16px;
-	margin-bottom: 16px;
 	display: flex;
 	align-items: center;
 

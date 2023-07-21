@@ -6,7 +6,7 @@ import '@/assets/sass/routes/VendorsList.scss';
 
 // Preload page's data
 export async function loader() {
-	await store.dispatch(fetchVendors());
+	await store.dispatch(fetchVendors(0));
 	const state = store.getState();
 
 	if (state.app.error) {
@@ -32,8 +32,8 @@ export default function VendorsList() {
 				dispatch(fetchVendors());
 			});
 		});
-		if (vendors && vendors.length) {
 
+		if (vendors && vendors.length) {
 			observer.observe(scrollElement.current!);
 		}
 
@@ -56,7 +56,12 @@ export default function VendorsList() {
 							<div ref={scrollElement}>در حال بارگذاری...</div>
 						</div>
 					)
-					: <p>رستورانی یافت نشد.</p>
+					: (
+						<div className='list__not-found'>
+							<img src="/not-found.svg" alt="Not found illustration" />
+							<p >رستورانی یافت نشد.</p>
+						</div>
+					)
 			}
 		</div>
 	);

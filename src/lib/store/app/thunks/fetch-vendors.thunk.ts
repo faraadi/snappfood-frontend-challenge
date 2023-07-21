@@ -1,15 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { VendorResult } from '@/lib/types/vendor';
 import { VendorsService } from '@/lib/service';
 import { type AppState } from '../app.state';
 
-interface ThunkReturn {
-	data: VendorResult[]
-	page: number
-}
+/**
+ * Fetch the next page of vendors list.
+ * Optionally accepts a page parameter to lookup fo a specific page.
+ */
+const fetchVendors = createAsyncThunk('app/fetchVendors', async (_page: number | undefined, { getState, rejectWithValue }) => {
+	const state = getState() as { app: AppState };
+	const { nextPage, lat, long } = state.app;
 
-const fetchVendors = createAsyncThunk<ThunkReturn | void, void, {state: {app: AppState}}>('app/fetchVendors', async (_param, { getState, rejectWithValue }) => {
-	const { nextPage: page, lat, long } = getState().app;
+	const page = Number(_page) >= 0 ? Number(_page) : nextPage;
 
 	const { data, err } = await VendorsService.getList(page, lat, long);
 

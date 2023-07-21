@@ -1,0 +1,39 @@
+@import '@/assets/sass/variables';
+
+.btn {
+	all: unset;
+	border-radius: $rounded;
+	padding: 8px 12px;
+	cursor: pointer;
+	transition: .2s;
+	transition-property: background-color, color;
+	line-height: 1;
+
+	&--primary {
+		background-color: $color_primary;
+		color: white;
+
+		&:hover {
+			background-color: #ff38ac;
+		}
+	
+		&:active {
+			background-color: #e00096;
+		}
+	}
+
+	&--secondary {
+		background-color: white;
+		color: $color_primary;
+
+		&:hover {
+			background-color: transparentize($color_primary, .9);
+		}
+		
+		&:active {
+			background-color: #e00096;
+			color: white;
+		}
+	}
+
+}

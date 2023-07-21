@@ -7,8 +7,39 @@
 	justify-content: space-between;
 }
 
+.justify-center {
+	justify-content: center;
+}
+
 .items-center {
 	align-items: center;
+}
+.items-end {
+	align-items: flex-end;
+}
+
+.mb-2 {
+	margin-bottom: 8px;
+}
+.mr-2 {
+	margin-right: 8px;
+}
+.ml-2 {
+	margin-left: 8px;
+}
+
+.text-primary {
+	color: $color_primary
+}
+
+.text-center {
+	text-align: center;
+}
+
+.container {
+	width: 100%;
+	margin: auto;
+	padding: 0 8px;
 }
 
 @media (min-width: 640px) {

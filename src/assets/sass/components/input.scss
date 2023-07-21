@@ -1,0 +1,24 @@
+@import '@/assets/sass/variables';
+
+.input {
+	all: unset;
+	border-radius: $rounded;
+	background-color: white;
+	border: 1px solid transparentize(#454545, .5);
+	padding: 3px 12px;
+	line-height: 1;
+
+	&:focus {
+		border: 1px solid $color_primary
+	}
+
+	&__wrapper {
+		display: inline-block;
+	}
+
+	&__label {
+		display: block;
+		cursor: pointer;
+	}
+
+}
