@@ -9,7 +9,7 @@ export default function Default() {
 			<header className="header">
 				{navigation.state === 'loading' && <div className="header__scrollbar"></div>}
 				<div className="container flex items-center">
-					<img className="header__logo" src="/snappfood-logo.svg" alt="Snappfood logo" width={60} height={30} />
+					<img className="header__logo" src="/snappfood-logo.svg" alt="Snappfood logo" width='60px' height='30px' />
 					<nav className="header__nav">
 						<ul className="header__navList">
 							<li className="header__navItem">

@@ -1,3 +1,4 @@
+import { Image } from '@/lib/components';
 import { NumberUtils } from '@/lib/utils';
 import { Vendor } from '@/lib/types/vendor';
 import '@/assets/sass/routes/VendorCard.scss';
@@ -14,8 +15,8 @@ export default function VendorCard({ vendor }: Props) {
 		<a href={vendor.menuUrl} rel='noreferrer noopener' target='_blank'>
 			<article className='card'>
 				<div className='card__header'>
-					<img className='card__cover' src={coverPhoto} alt={vendor.logo} width={350} height={200} draggable={false} />
-					<img className='card__logo' src={vendor.logo} alt={`${vendor.logo}'s logo`} width={150} height={150} />
+					<Image className='card__cover' src={coverPhoto} alt={vendor.logo} width='350px' height='200px' draggable={false} crossOrigin='anonymous' loading='lazy' />
+					<Image className='card__logo' src={vendor.logo} alt={`${vendor.logo}'s logo`} width='150px' height='150px' crossOrigin='anonymous' loading='lazy' />
 				</div>
 				<div className='card__body'>
 					<div className='flex justify-between'>
@@ -40,7 +41,7 @@ export default function VendorCard({ vendor }: Props) {
 							}
 							{
 								vendor.deliveryFee > 0
-									? NumberUtils.thSeparator(vendor.deliveryFee) + ' تومان'
+									? `${NumberUtils.thSeparator(vendor.deliveryFee)  } تومان`
 									: 'رایگان'
 							}
 						</div>
