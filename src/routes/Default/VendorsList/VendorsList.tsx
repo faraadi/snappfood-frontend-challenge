@@ -1,42 +1,63 @@
-import { useLoaderData } from 'react-router-dom';
-import service from '@/lib/service/service';
-import { VendorList } from '@/lib/types/vendor';
+import { useEffect, useRef } from 'react';
 import { VendorCard, VendorText } from './components';
+import { fetchVendors } from '@/lib/store/app/thunks';
+import { store, useAppDispatch, useAppSelector } from '@/lib/store/store';
 import '@/assets/sass/routes/VendorsList.scss';
 
+// Preload page's data
 export async function loader() {
-	const vendors = await service.get('https://snappfood.ir/mobile/v3/restaurant/vendors-list', {
-		params: {
-			// 'extra-filter': '{"vendor_collection":0,"distance_sort":false,"vendor_count_respect":false,"vendor_collection_view_mode":"","banner_collection":false,"new_home":true,"new_home_section":"SERVICES","page_supertype":null,"user_base_list":false,"only_vendor_ids":null,"spot": "list"}',
-			updateChannels: '["master"]',
-			lat: '35.759',
-			long: '51.401',
-			page: '0',
-			// 'page_size': '10',
-		},
-	});
+	await store.dispatch(fetchVendors());
+	const state = store.getState();
 
-	return vendors.data;
+	if (state.app.error) {
+		throw new Error(state.app.error);
+	}
+
+	return true;
 }
 
 export default function VendorsList() {
-	const data = useLoaderData() as VendorList;
-	const vendors = data.finalResult;
-	console.log(data, vendors);
-	if (vendors) {
-		return (
-			<div className="container">
-				<div className='list'>
-					{
-						vendors.map((v, i) => (
-							v.type === 'TEXT'
-								? <VendorText key={i} text={v.data} />
-								: <VendorCard key={v.data.id} vendor={v.data} />
-						))
-					}
-				</div>
-			</div>
-		);
-	}
-	return <p>None</p>;
+	const vendors = useAppSelector(state => state.app.vendors);
+	const dispatch = useAppDispatch();
+
+	const scrollElement = useRef(null);
+
+	useEffect(() => {
+		// Infinite scroll using browser's Intersection Observers
+		const observer = new IntersectionObserver((e) => {
+			e.forEach(entry => {
+				if (!entry.isIntersecting) {
+					return;
+				}
+				dispatch(fetchVendors());
+			});
+		});
+		if (vendors && vendors.length) {
+
+			observer.observe(scrollElement.current!);
+		}
+
+		return () => observer.disconnect();
+	}, [vendors, dispatch]);
+
+	return (
+		<div className="container">
+			{
+				vendors && vendors.length
+					? (
+						<div className='list'>
+							{
+								vendors.map((v, i) => (
+									v.type === 'TEXT'
+										? <VendorText key={i} text={v.data} />
+										: <VendorCard key={v.data.id} vendor={v.data} />
+								))
+							}
+							<div ref={scrollElement}>در حال بارگذاری...</div>
+						</div>
+					)
+					: <p>رستورانی یافت نشد.</p>
+			}
+		</div>
+	);
 }

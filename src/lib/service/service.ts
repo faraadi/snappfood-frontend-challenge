@@ -1,16 +1,28 @@
 import axios from 'axios';
 
-const service = axios.create();
+export default class Service {
+	http = axios.create();
 
-service.interceptors.response.use(
-	function (res) {
+	constructor() {
+		this.http.interceptors.response.use(
+			function (res) {
+				return {
+					...res,
+					ok: res.status >= 200 || res.status < 400,
+					data: res.data.data,
+				};
+			},
+			function (err) {
+				return Promise.reject(err);
+			},
+		);
+	}
+
+	response<T, E>(data: T, err: E) {
 		return {
-			...res,
-			ok: res.status >= 200 || res.status < 400,
-			data: res.data.data,
+			data,
+			err,
+			ok: !!err,
 		};
-	},
-	function (err) {},
-);
-
-export default service;
+	}
+}

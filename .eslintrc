@@ -11,7 +11,8 @@
         "eslint:recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
         "plugin:react/recommended",
-		"plugin:react/jsx-runtime"
+		"plugin:react/jsx-runtime",
+		"plugin:react-hooks/recommended"
     ],
 	"parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -62,7 +63,6 @@
         "no-empty-function": 2,
         "no-eval": 2,
         "no-param-reassign": 2,
-        "no-use-before-define": 2,
         "yoda": [
             2,
             "never"
@@ -110,7 +110,8 @@
             "always"
         ],
         "no-duplicate-imports": 2,
-        "no-useless-constructor": 2,
+        "no-useless-constructor": 0,
+		"@typescript-eslint/no-useless-constructor": 2,
         "object-shorthand": [
             2,
             "always",
