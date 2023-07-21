@@ -20,7 +20,7 @@ const routes: RouteObject[] = [
 				loader: vendorsListLoader,
 			},
 		],
-	}
+	},
 ];
 
 export const router = createBrowserRouter(routes);
