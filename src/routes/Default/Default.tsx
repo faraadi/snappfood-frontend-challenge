@@ -1,4 +1,4 @@
-import { Outlet, NavLink, useNavigation } from "react-router-dom";
+import { Outlet, NavLink, useNavigation, ScrollRestoration } from 'react-router-dom';
 import '@/assets/sass/routes/Default.scss';
 
 export default function Default() {
@@ -23,6 +23,8 @@ export default function Default() {
 				</div>
 			</header>
 			<Outlet />
+
+			<ScrollRestoration />
 		</div>
-	)
+	);
 }
