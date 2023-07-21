@@ -58,7 +58,7 @@ export default function VendorsList() {
 					)
 					: (
 						<div className='list__not-found'>
-							<img src="/not-found.svg" alt="Not found illustration" />
+							<img src="/not-found.svg" alt="Not found illustration" width="300px" height="350px" />
 							<p >رستورانی یافت نشد.</p>
 						</div>
 					)
